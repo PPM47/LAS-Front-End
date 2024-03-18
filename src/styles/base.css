@@ -1,0 +1,28 @@
+@import "./variables.css";
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html{
+    font-size: 11px;
+    
+}
+body{
+    background-color: var(--h-dark-blue);
+}
+/* div {
+    border: solid 1px red;
+} */
+body::-webkit-scrollbar{
+    width: 1rem;
+}
+body::-webkit-scrollbar-track{
+    background: var(--dark-blue);
+}
+
+body::-webkit-scrollbar-thumb{
+    background: var(--light-blue);
+}

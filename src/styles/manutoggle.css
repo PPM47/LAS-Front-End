@@ -1,0 +1,68 @@
+@import "./base.css";
+@import "./variables.css";
+
+.menu-toggle {
+  position: fixed;
+ 
+    top: .5rem;
+    right: .5rem;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.3rem;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    background-color: var(--h-dark-blue);
+    /* border: white solid 1px; */
+    border-radius: var(--bg-bo-rds);
+    /* border: solid .2rem var(--light-blue); */
+  }
+  @media (min-width: 809px) {
+    .menu-toggle {
+      display: none;
+    }
+  }
+  
+  .menu-btn-bgr {
+    width: 2rem;
+    height: 0.3rem;
+    border-radius: 10px;
+    background-color: var(--text-white);
+    
+
+  }
+  .menu-btn-bgr::before, .menu-btn-bgr::after {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 0.28rem;
+    border-radius: 10px;
+    background-color: var(--text-white);
+    transition: all 0.5s linear;
+  }
+  .menu-btn-bgr::before {
+    transform: translateY(-0.6em);
+    
+  }
+  .menu-btn-bgr::after {
+    transform: translateY(0.6em);
+    
+  }
+ 
+  .menu-toggle-active .menu-btn-bgr {
+    transform: translateX(-2.2rem);
+    background: transparent;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .menu-toggle-active .menu-btn-bgr::before {
+    transform: rotate(45deg) translate(1.55rem, -1.55rem);
+  }
+  
+  .menu-toggle-active .menu-btn-bgr::after {
+    transform: rotate(-45deg) translate(1.55rem, 1.55rem);
+  }

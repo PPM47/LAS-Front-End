@@ -1,0 +1,35 @@
+@import "./base.css";
+@import "./variables.css";
+.page-layout-main {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--h-dark-blue);
+}
+.spaceholder {
+  max-height: 100vh;
+  width: 100%;
+  max-width: 6rem;
+  background-color: var(--h-dark-blue);
+  transition: 0.3s ease-in-out;
+}
+.main-content-continer {
+  height: 100vh;
+  width: 100%;
+
+  background-color: var(--h-dark-blue);
+}
+/* .main-content-continer a {
+    font-size: 3rem;
+    cursor: pointer;
+} */
+
+@media (min-width: 809px) {
+  .spaceholder {
+    height: 100%;
+    width: 100%;
+    max-width: 22rem;
+    background-color: var(--text-white);
+  }
+}
