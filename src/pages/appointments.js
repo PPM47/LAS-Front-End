@@ -1,7 +1,8 @@
 // import { Link } from "react-router-dom";
 import { CiMedicalCross, CiMedicalClipboard } from "react-icons/ci";
-import { FaHandHoldingMedical,FaHouseMedical } from "react-icons/fa6";
+import { FaHandHoldingMedical, FaHouseMedical } from "react-icons/fa6";
 import axios from "axios";
+import { MdDeleteSweep } from "react-icons/md";
 import { HiOutlineClipboardList } from "react-icons/hi";
 import SelectDrop from "../components/selectDrop";
 import FormInput from "../components/formInput";
@@ -9,11 +10,11 @@ import FormInput from "../components/formInput";
 import { useState } from "react";
 export default function Appointments() {
   const [values, setValues] = useState({
+    patientId: "",
     testCatagory: "",
     doctorName: "",
     date: "",
     time: "",
-    patientid: "",
     email: "",
   });
   const [isLoding, setIsLoding] = useState(false);
@@ -25,30 +26,101 @@ export default function Appointments() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/appointment/make', {
-        testCatagory: values.testCatagory,
-        doctorName: values.doctorName,
-        date: values.date,
-        time: values.time,
-        patientid: values.patientid,
-        email: values.email,
-    });
-    alert("Patient Registration Successful");
-   
-    }
-    catch(err){
+      const responce = await axios.post(
+        "http://localhost:9098/api/appointment/make",
+        {
+          patientId: values.patientId,
+          testCatagory: values.testCatagory,
+          doctorName: values.doctorName,
+          date: values.date,
+          time: values.time,
+          email: values.email,
+        }
+      );
+      alert("Patient Registration Successful");
+      setIsLoding(false);
+    } catch (err) {
       console.log(err);
-      alert("Patient Registration Failure!");
+      alert("Patient Registration Failure!", err);
+      setIsLoding(false);
     }
-    setIsLoding(false);
-  }
+  };
+  
+  //--------------------------------------------------------------------
+  const [deletevalues, setDValues] = useState({
+    appointmentId: "",
+    patientId: "",
+    email: "",
+  });
+  const [disLoding, setDIsLoding] = useState(false);
+  const onDChange = (e) => {
+    setDValues({ ...deletevalues, [e.target.name]: e.target.value });
+  };
+  //handleDeleteSubmit
+  const handleDeleteSubmit = async (e) => {
+    e.preventDefault();
+    setDIsLoding(true);
+    try {
+      const responce = await axios.delete(
+        `http://localhost:9098/api/appointment/delete/${deletevalues.appointmentId}`,
+        {
+          data: {
+            patientId: deletevalues.patientId,
+            email: deletevalues.email
+          }
+        }
+      );
+      alert("Appointment Cancel Successful");
+    } catch (err) {
+      console.log(err);
+      alert("Appointment Cancel Failure!");
+    }
+    setDIsLoding(false);
+  };
+  //--------------------------------------------------------------------
   console.log(values);
+  console.log(deletevalues);
+
+  const deleteinputs = [
+    {
+      id: 31,
+      inpuConClass: "fromInput field-con",
+      name: "patientId",
+      placeholder: "Patient ID",
+      type: "text",
+      errorMessage: "Patient ID should be 6 characters long",
+      label: "Patient ID",
+      required: true,
+    },
+
+    {
+      id: 30,
+      inpuConClass: "fromInput field-con",
+      name: "appointmentId",
+      placeholder: "Appointment ID",
+      type: "text",
+      errorMessage: "Appointment ID should be 6 characters long",
+      label: "Appointment ID",
+      required: true,
+    },
+    {
+      id: 32,
+    inpuConClass: "fromInput field-con",
+    name: "email",
+    placeholder: "Email",
+    type: "email",
+    errorMessage: "Please enter a valid email address",
+    label: "Email",
+    required: true,
+  },
+  ];
+  //--------------------------------------------------------------------
 
   const apinputs = [
     {
       id: 1,
       inpuConClass: "fromInput field-con",
-      name: "patientid",
+      name: "patientId",
       placeholder: "Patient ID",
       type: "text",
       errorMessage:
@@ -67,7 +139,7 @@ export default function Appointments() {
       label: "Doctor Name",
       required: true,
     },
-    
+
     {
       id: 2,
       inpuConClass: "fromInput field-con",
@@ -88,8 +160,6 @@ export default function Appointments() {
       label: "Date",
       required: true,
     },
-    
-  
   ];
   const selectapinputs = [
     {
@@ -134,7 +204,6 @@ export default function Appointments() {
     },
   ];
 
-
   console.log(values);
   return (
     <main className="reg-from-center">
@@ -147,7 +216,7 @@ export default function Appointments() {
       </div>
 
       <section className="form-main-continer">
-      <div className="page-bg-min-con">
+        <div className="page-bg-min-con">
           <div className="page-background page-back-4">
             <FaHouseMedical />
           </div>
@@ -173,7 +242,7 @@ export default function Appointments() {
           </div>
         </div>
 
-        <form className="reg-from-con" onSubmit={handleSubmit}>
+        <form className="reg-from-con" method="POST" onSubmit={handleSubmit}>
           {apinputs.map((input) => (
             <FormInput
               key={input.id}
@@ -191,12 +260,29 @@ export default function Appointments() {
             />
           ))}
 
-          <button
-          disabled={isLoding}
-          >Submit</button>
+          <button disabled={isLoding}>Submit</button>
         </form>
-       
-        
+        {/* --------------------------------------------------------------------- */}
+        <div className="form-name-logo-con">
+          <div className="form-icon-con">
+            <MdDeleteSweep />
+          </div>
+          <div className="form-name-con">
+            <span>Appointment Cancel</span>
+          </div>
+        </div>
+        <form className="reg-from-con" onSubmit={handleDeleteSubmit}>
+          {deleteinputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={deletevalues[input.name]}
+              onChange={onDChange}
+            />
+          ))}
+
+          <button disabled={disLoding}>Cancel</button>
+        </form>
       </section>
     </main>
   );

@@ -1,17 +1,23 @@
 // import { useRef } from "react";
-
 import { CiMedicalCross, CiMedicalClipboard } from "react-icons/ci";
-import { FaHandHoldingMedical, FaHouseMedical } from "react-icons/fa6";
-
-import { IoIosCreate } from "react-icons/io";
-
+import { FaHandHoldingMedical,FaHouseMedical } from "react-icons/fa6";
 import SelectDrop from "../components/selectDrop";
-// import { Link } from "react-router-dom";
+
+import { Link } from "react-router-dom";
+
+
+import { FaUserFriends } from "react-icons/fa";
+
+import { TiUserDelete } from "react-icons/ti";
+
 import FormInput from "../components/formInput";
-import { useState } from "react";
+import { useState} from "react";
 import axios from "axios";
+
 export default function Registration() {
+  
   const [values, setValues] = useState({
+    patientId: "",
     patientFName: "",
     patientLName: "",
     number: "",
@@ -20,38 +26,127 @@ export default function Registration() {
     phonenumber: "",
     gender: "",
   });
+ 
+ 
   const [isLoding, setIsLoding] = useState(false);
-
+ 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
+ 
+//--------------------------------------------------------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post(
-        "http://localhost:9098/api/patient/Reg",
-        {
-          patientFName: values.patientFName,
-          patientLName: values.patientLName,
-          number: values.number,
-          email: values.email,
-          password: values.password,
-          phonenumber: values.phonenumber,
-          gender: values.gender,
-        }
-      );
-      alert("Patient Registration Successful");
-    } catch (err) {
+      const responce = await axios.put(`http://localhost:9098/api/patient/update/${values.patientId}`, {
+        patientFName: values.patientFName,
+        patientLName: values.patientLName,
+        number: values.number, 
+        email: values.email,
+        password: values.password,
+        phonenumber: values.phonenumber,
+        gender: values.gender
+    });
+    alert("Patient Update Successful");
+   
+    }
+    catch(err){
       console.log(err);
-      alert("Patient already exsist or invalid email Registration Failure!");
+      alert("Patient update Failure!");
     }
     setIsLoding(false);
-  };
+  }
+  console.log(values);
+  //--------------------------------------------------------------------
+  const [deletevalues, setDValues] = useState({
+    patientId: "",
+    email: "",
+    password: "",
 
+  });
+  const [disLoding, setDIsLoding] = useState(false);
+  const onDChange = (e) => {
+    setDValues({ ...deletevalues, [e.target.name]: e.target.value });
+  };
+  //handleDeleteSubmit
+  const handleDeleteSubmit = async (e) => {
+    e.preventDefault();
+    setDIsLoding(true);
+    try {
+      const responce = await axios.delete(`http://localhost:9098/api/patient/delete/${deletevalues.patientId}`, {
+      
+      data: {
+        email: deletevalues.email,
+        password: deletevalues.password
+      }
+       
+    });
+    alert("Patient Delete Successful");
+   
+    }
+    catch(err){
+      console.log(err);
+      alert("Patient Delete Failure!");
+    }
+    setDIsLoding(false);
+  }
+  //--------------------------------------------------------------------
+  
+  console.log(deletevalues);
+
+  const deleteinputs = [
+
+    {
+        id: 30,
+        inpuConClass: "fromInput field-con",
+        name: "patientId",
+        placeholder: "Patient ID",
+        type: "text",
+        errorMessage:
+          "Patient ID should be 6 characters long",
+        label: "Patient ID",
+        required: true,
+    },
+    {
+        id: 31,
+      inpuConClass: "fromInput field-con",
+      name: "email",
+      placeholder: "Email",
+      type: "email",
+      errorMessage: "Please enter a valid email address",
+      label: "Email",
+      required: true,
+    },
+    {
+        id: 32,
+        inpuConClass: "fromInput field-con",
+        name: "password",
+        placeholder: "Password",
+        type: "password",
+        errorMessage:
+          "* Password is Must",
+        pattern: `^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,19}$`,
+        label: "Password",
+        required: true,
+      }
+      
+  ];
+ 
   const inputs = [
     {
+        id: 49,
+        inpuConClass: "fromInput field-con",
+        name: "patientId",
+        placeholder: "Patient ID",
+        type: "text",
+        errorMessage:
+          "Patient ID should be 6 characters long",
+        label: "Patient ID",
+        required: true,
+    },
+    {
+        
       id: 10,
       inpuConClass: "fromInput field-con",
       name: "patientFName",
@@ -93,13 +188,15 @@ export default function Registration() {
       label: "Phone Number",
       required: true,
     },
+   
   ];
+ 
 
   const selectapinputs = [
     {
       id: 55,
       inpuConClass: "fromInput field-con gender",
-
+     
       name: "gender",
       type: "text",
       optionName1: "Please Select Your Gender",
@@ -154,14 +251,15 @@ export default function Registration() {
     },
   ];
 
+
   return (
     <main className="reg-from-center">
       <div className="page-name-con">
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
-          <IoIosCreate />
+          <FaUserFriends />
         </span>
-        <h1 className="page-name-h1">Registration</h1>
+        <h1 className="page-name-h1">Patient Update/Delete</h1>
       </div>
 
       <section className="form-main-continer">
@@ -185,10 +283,10 @@ export default function Registration() {
 
         <div className="form-name-logo-con">
           <div className="form-icon-con">
-            <IoIosCreate />
+            <FaUserFriends />
           </div>
           <div className="form-name-con">
-            <span>Patient Registration</span>
+            <span>Patient Update</span>
           </div>
         </div>
 
@@ -209,7 +307,7 @@ export default function Registration() {
               onChange={onChange}
             />
           ))}
-          {inputs2.map((input) => (
+           {inputs2.map((input) => (
             <FormInput
               key={input.id}
               {...input}
@@ -218,8 +316,35 @@ export default function Registration() {
             />
           ))}
 
-          <button disabled={isLoding}>Submit</button>
+          <button
+          disabled={isLoding}
+          >Update</button>
         </form>
+
+        <div className="form-name-logo-con">
+          <div className="form-icon-con">
+            <TiUserDelete />
+          </div>
+          <div className="form-name-con">
+            <span>Patient Delete</span>
+          </div>
+        </div>
+        <form className="reg-from-con" onSubmit={handleDeleteSubmit}>
+          {deleteinputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={deletevalues[input.name]}
+              onChange={onDChange}
+            />
+          ))}
+         
+          
+          <button
+          disabled={disLoding}
+          >Delete</button>
+        </form>
+        
       </section>
     </main>
   );

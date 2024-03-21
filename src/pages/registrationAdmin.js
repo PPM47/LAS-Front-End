@@ -1,7 +1,8 @@
 // import { useRef } from "react";
-import { HiOutlinePencilAlt } from "react-icons/hi";
+
 import { CiMedicalCross, CiMedicalClipboard } from "react-icons/ci";
 import { FaHandHoldingMedical,FaHouseMedical } from "react-icons/fa6";
+import { MdOutlineStreetview } from "react-icons/md";
 import { Link } from "react-router-dom";
 import FormInput from "../components/formInput";
 import { useState} from "react";
@@ -36,7 +37,7 @@ export default function Registration() {
     }
     catch(err){
       console.log(err);
-      alert("Admin Registration Failure!");
+      alert("Admin already exsist or invalid email. Registration Failure!");
     }
     setIsLoding(false);
   }
@@ -102,7 +103,7 @@ export default function Registration() {
       <div className="page-name-con">
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
-          <HiOutlinePencilAlt />
+          <MdOutlineStreetview />
         </span>
         <h1 className="page-name-h1">Admin Registration</h1>
       </div>
@@ -128,7 +129,7 @@ export default function Registration() {
 
         <div className="form-name-logo-con">
           <div className="form-icon-con">
-            <HiOutlinePencilAlt />
+            <MdOutlineStreetview />
           </div>
           <div className="form-name-con">
             <span>Admin Registration</span>
@@ -156,18 +157,9 @@ export default function Registration() {
 
           <button
           disabled={isLoding}
-          >Sign Up</button>
+          >Submit</button>
         </form>
-        <p className="alredy-have-a-p">
-          Already registered?
-          <br />
-        </p>
-        <span className="sign-in-span">
-          {/*put router link here*/}
-          <Link className="sign-in-link" to="/adminlogin">
-            Sign In
-          </Link>
-        </span>
+       
       </section>
     </main>
   );

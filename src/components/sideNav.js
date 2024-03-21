@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { RiSecurePaymentLine } from "react-icons/ri";
-import { CgDetailsMore } from "react-icons/cg";
+
+import { IoIosCreate } from "react-icons/io";
+import { FaUserFriends } from "react-icons/fa";
+import { RiFileSearchFill } from "react-icons/ri";
+
+import { MdPageview } from "react-icons/md";
+import { SiCashapp } from "react-icons/si";
 import { ImLab } from "react-icons/im";
 import { TbLogout } from "react-icons/tb";
-import { BsPeople } from "react-icons/bs";
+import { MdOutlineStreetview } from "react-icons/md";
+import { MdManageSearch } from "react-icons/md";
+
+
 import { HiOutlineClipboardList, HiOutlinePencilAlt } from "react-icons/hi";
 
 export const SideNav = () => {
   const [isNavOpen, setNavOpen] = useState(false);
- 
+
   return (
     <nav className="nav">
       <div
@@ -63,7 +71,7 @@ export const SideNav = () => {
           <div>
             <NavLink className="nav-item-con" to="/viewAppointments">
               <Link className="all-a-icons" to="/viewAppointments">
-                <HiOutlineClipboardList className="nav-item-icon" />
+                <MdPageview className="nav-item-icon" />
               </Link>
               <Link
                 className={`${
@@ -76,10 +84,42 @@ export const SideNav = () => {
             </NavLink>
           </div>
 
+        
+         
+          <div>
+            <NavLink className="nav-item-con" to="/testdetails">
+              <Link className="all-a-icons" to="/testdetails">
+                <RiFileSearchFill className="nav-item-icon" />
+              </Link>
+              <Link
+                className={`${
+                  isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
+                }`}
+                to="/testdetails"
+              >
+                Patient Details
+              </Link>
+            </NavLink>
+          </div>
+          <div>
+            <NavLink className="nav-item-con" to="/PatientUpDel">
+              <Link className="all-a-icons" to="/PatientUpDel">
+                <FaUserFriends className="nav-item-icon" />
+              </Link>
+              <Link
+                className={`${
+                  isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
+                }`}
+                to="/PatientUpDel"
+              >
+                Patients <br></br> Update/Delete
+              </Link>
+            </NavLink>
+          </div>
           <div>
             <NavLink className="nav-item-con" to="/registration">
               <Link className="all-a-icons" to="/registration">
-                <HiOutlinePencilAlt className="nav-item-icon" />
+                <IoIosCreate className="nav-item-icon" />
               </Link>
               <Link
                 className={`${
@@ -94,7 +134,7 @@ export const SideNav = () => {
           <div>
             <NavLink className="nav-item-con" to="/adminregistration">
               <Link className="all-a-icons" to="/adminregistration">
-                <HiOutlinePencilAlt className="nav-item-icon" />
+                <MdOutlineStreetview className="nav-item-icon" />
               </Link>
               <Link
                 className={`${
@@ -107,24 +147,9 @@ export const SideNav = () => {
             </NavLink>
           </div>
           <div>
-            <NavLink className="nav-item-con" to="/testdetails">
-              <Link className="all-a-icons" to="/testdetails">
-                <CgDetailsMore className="nav-item-icon" />
-              </Link>
-              <Link
-                className={`${
-                  isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
-                }`}
-                to="/testdetails"
-              >
-                Test Details
-              </Link>
-            </NavLink>
-          </div>
-          <div>
             <NavLink className="nav-item-con" to="/payment">
               <Link className="all-a-icons" to="/payment">
-                <RiSecurePaymentLine className="nav-item-icon" />
+                <SiCashapp className="nav-item-icon" />
               </Link>
               <Link
                 className={`${
@@ -136,38 +161,23 @@ export const SideNav = () => {
               </Link>
             </NavLink>
           </div>
-          <div>
-            <NavLink className="nav-item-con" to="/patients">
-              <Link className="all-a-icons" to="/patients">
-                <BsPeople className="nav-item-icon" />
-              </Link>
-              <Link
-                className={`${
-                  isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
-                }`}
-                to="/patients"
-              >
-                Patients
-              </Link>
-            </NavLink>
-          </div>
         </div>
         {/* ------------nav itmes--end----------------- */}
         <div className={`logout-con ${isNavOpen ? "logout-con-active" : ""}`}>
           <span className="admin-span">Welcome Admin</span>
           <Link
             className={`${isNavOpen ? "logout-active" : "logout"}`}
-            to="/patientlogin"
+            to="/adminlogin"
           >
             <Link
               className={`${
                 isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
               }`}
-              to="/patientlogin"
+              to="/adminlogin"
             >
               Log Out
             </Link>
-            <Link className="all-a-icons" to="/patientlogin">
+            <Link className="all-a-icons" to="/adminlogin">
               <TbLogout className="nav-item-icon" />
             </Link>
           </Link>

@@ -7,7 +7,7 @@ import "./App.css";
 import AdminLogin from "./pages/adminlogin";
 import Appointments from "./pages/appointments";
 import ViewAppointments from "./pages/viewAppointment";
-import Patients from "./pages/patients";
+import PatientUpDel from "./pages/patientUpDel";
 import Registration from "./pages/registration";
 import AdminRegistration from "./pages/registrationAdmin";
 import Payment from "./pages/payment";
@@ -21,12 +21,7 @@ function App() {
   // const [logindata, setdata] = useState();
   return (
     <>
-      <div className="login-page-main-continer">
-        <Routes>
-          <Route index element={<AdminLogin />} />
-          <Route path="/adminlogin" element={<AdminLogin />} />
-        </Routes>
-      </div>
+      
       <div className="page-layout-main">
         <div className="spaceholder">
           <SideNav />
@@ -39,7 +34,7 @@ function App() {
             <Route path="/adminregistration" element={< AdminRegistration />} />
             <Route path="/testdetails" element={<TestDetails />} />
             <Route path="/payment" element={<Payment />} />
-            <Route path="/patients" element={<Patients />} />
+            <Route path="/PatientUpDel" element={<PatientUpDel />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </div>

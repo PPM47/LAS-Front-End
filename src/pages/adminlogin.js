@@ -2,12 +2,45 @@ import { useState } from "react";
 // import { Link } from "react-router-dom";
 import FormInput from "../components/formInput";
 import { RiAdminLine } from "react-icons/ri";
-
+import { Navigate } from 'react-router-dom';
+import axios from "axios";
 export default function AdminLogin() {
   const [logvalues, setValues] = useState({
     email: "",
     password: "",
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+ 
+  const onChange = (e) => {
+    setValues({ ...logvalues, [e.target.name]: e.target.value });
+  };
+  // const [isLoding, setIsLoding] = useState(false);
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoggedIn(true);
+    try {
+      const responce = await axios.post('http://localhost:9098/api/admin/login', {
+      
+        email: logvalues.email,
+        password: logvalues.password,
+
+    });
+    alert("Admin Registration Successful");
+   
+    }
+    catch(err){
+      console.log(err);
+      alert("Admin already exsist or invalid email. Registration Failure!");
+    }
+    setIsLoggedIn(false);
+  }
+
+ 
+  if (isLoggedIn) {
+    return <Navigate to="/appointments" />;
+  }
   
   const aLInputs = [
     {
@@ -33,15 +66,10 @@ export default function AdminLogin() {
     },
   ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  const onChange = (e) => {
-    setValues({ ...logvalues, [e.target.name]: e.target.value });
-  };
+ 
   console.log(logvalues);
   return (
-    <>
+    <div className="login-page-main-continer">
       <div className="login-main-continer">
         <section className="form-main-continer login-main">
           <div className="form-name-logo-con">
@@ -69,6 +97,6 @@ export default function AdminLogin() {
          
         </section>
       </div>
-    </>
+    </div>
   );
 }

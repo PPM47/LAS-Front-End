@@ -7,7 +7,7 @@ import { CgDetailsMore } from "react-icons/cg";
 export default function TestDetailsPa() {
   const [tdvalues, setTDValues] = useState({
     patientid: "",
-    appointmentid: "",
+    
   });
 
   const tdinputs = [
@@ -94,16 +94,14 @@ export default function TestDetailsPa() {
 
           <button>Search</button>
         </form>
-        <p>
-          Already registered?
-          <br />
-        </p>
-        <span className="sign-in-span">
-          {/*put router link here*/}
-          <Link className="sign-in-link" to="/adminlogin">
-            Sign In
-          </Link>
-        </span>
+        <div className="form-name-logo-con">
+          <div className="form-icon-con">
+            <CgDetailsMore />
+          </div>
+          <div className="form-name-con">
+            <span>Patient Test Details</span>
+          </div>
+        </div>
       </section>
     </main>
   );

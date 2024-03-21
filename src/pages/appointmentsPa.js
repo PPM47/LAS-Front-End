@@ -9,11 +9,11 @@ import FormInput from "../components/formInput";
 import { useState } from "react";
 export default function AppointmentsPa() {
   const [values, setValues] = useState({
+    patientId: "",
     testCatagory: "",
     doctorname: "",
     date: "",
     time: "",
-    patientid: "",
     email: "",
   });
   const [isLoding, setIsLoding] = useState(false);
@@ -21,16 +21,16 @@ export default function AppointmentsPa() {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async (e) => {
+  const handlepaSubmit = async (e) => {
     e.preventDefault();
     setIsLoding(true);
     try {
       const responce = await axios.post('http://localhost:9098/api/appointment/make', {
+        patientId: values.patientId,
         testCatagory: values.testCatagory,
         doctorname: values.doctorname,
         date: values.date,
         time: values.time,
-        patientid: values.patientid,
         email: values.email,
     });
     alert("Patient Registration Successful");
@@ -173,7 +173,7 @@ export default function AppointmentsPa() {
           </div>
         </div>
 
-        <form className="reg-from-con" onSubmit={handleSubmit}>
+        <form className="reg-from-con" onSubmit={handlepaSubmit}>
           {apinputs.map((input) => (
             <FormInput
               key={input.id}
