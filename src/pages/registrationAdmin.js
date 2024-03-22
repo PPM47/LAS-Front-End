@@ -159,7 +159,16 @@ export default function Registration() {
           disabled={isLoding}
           >Submit</button>
         </form>
-       
+        <p className="alredy-have-a-p">
+          Already registered?
+          <br />
+        </p>
+        <span className="sign-in-span">
+          {/*put router link here*/}
+          <Link className="sign-in-link" to="/adminlogin">
+            Sign In
+          </Link>
+        </span>
       </section>
     </main>
   );

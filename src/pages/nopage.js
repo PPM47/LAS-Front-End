@@ -1,12 +1,17 @@
 
 import "../styles/component.css";
 import "../styles/layout.css";
+import Welcom from '../png/66_generated.png';
 export default function NoPage() {
     return (
       <>
-        <div className="na-page-main-continer">
-          <h1>Errror 404: not found</h1>
-          <h1>NoPage</h1>
+        <div className="welcome-user">
+          <div className="welcom-img-con">
+            <img className="welcom-img" src={Welcom} alt="" />
+          </div>
+          <h1>Welcome Admin</h1>
+          
+         
         </div>
       </>
     );
