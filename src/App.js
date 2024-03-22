@@ -23,9 +23,11 @@ function App() {
   // const [logindata, setdata] = useState();
   return (
     <>
+   
     <Routes>
-    <Route path="/adminlogin" index element={<AdminLogin/>} />
+    <Route path="" index element={<AdminLogin/>} />
     </Routes>
+   
       
       <div className="page-layout-main">
         <div className="spaceholder">
