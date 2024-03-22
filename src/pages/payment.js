@@ -13,6 +13,7 @@ export default function Registration() {
   
   const [values, setValues] = useState({
     name: "",
+    date: "",
     patientId: "",
     appointmentId: "",
     email: "",
@@ -31,6 +32,7 @@ export default function Registration() {
     try {
       const responce = await axios.post('http://localhost:9098/api/appointment/payment', {
         name: values.name,
+        date: values.date,
         patientId: values.patientId, 
         appointmentId: values. appointmentId,
         email: values.email,

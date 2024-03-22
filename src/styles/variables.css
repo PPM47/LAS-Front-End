@@ -1,6 +1,6 @@
 :root{
     /*--------------Colors------------------*/
-    --h-dark-blue:#0152af;
+    --h-dark-blue:#011e49;
     --hl-dark-blue:#070748;
     --dark-blue:#03045e;
     --light-blue:#ffffff;
@@ -12,8 +12,8 @@
     --no-error-msg: green;
 
     --light-blue-form:#b8b8b8;
-    --h-dark-blue-form:#ffffff;
-    --text-white-form: #0152af;
+    --h-dark-blue-form:#ececec;
+    --text-white-form: #011e49;
     --bg-white-form: #FFFF;
 
     /*--------------width & hight------------------*/

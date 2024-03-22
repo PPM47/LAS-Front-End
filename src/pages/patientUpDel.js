@@ -58,7 +58,7 @@ export default function Registration() {
     setIsLoding(false);
   }
   console.log(values);
-  //--------------------------------------------------------------------
+  //----------------------------Patient delete----------------------------------------
   const [deletevalues, setDValues] = useState({
     patientId: "",
     email: "",
@@ -91,7 +91,7 @@ export default function Registration() {
     }
     setDIsLoding(false);
   }
-  //--------------------------------------------------------------------
+ //----------------------------Patient delete----------------------------------------
   
   console.log(deletevalues);
 
@@ -320,7 +320,7 @@ export default function Registration() {
           disabled={isLoding}
           >Update</button>
         </form>
-
+{/*  //----------------------------Patient delete----------------------------------------*/}
         <div className="form-name-logo-con">
           <div className="form-icon-con">
             <TiUserDelete />
@@ -344,7 +344,7 @@ export default function Registration() {
           disabled={disLoding}
           >Delete</button>
         </form>
-        
+        {/*  //----------------------------Patient delete----------------------------------------*/}
       </section>
     </main>
   );
