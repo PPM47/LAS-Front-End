@@ -29,7 +29,7 @@ export default function Registration() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/patient/Reg', {
+      const responce = await axios.post('http://localhost:9098/api/appointment/payment', {
         name: values.name,
         patientId: values.patientId, 
         appointmentId: values. appointmentId,
@@ -90,6 +90,16 @@ export default function Registration() {
       type: "email",
       errorMessage: "Please enter a valid email address",
       label: "Email",
+      required: true,
+    },
+    {
+      id: 5,
+      inpuConClass: "fromInput field-con bir-date",
+      name: "date",
+      placeholder: "Date",
+      type: "date",
+      errorMessage: "Please enter your date",
+      label: "Date",
       required: true,
     },
     {
