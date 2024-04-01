@@ -7,9 +7,15 @@
   padding: 0;
 }
 html{
-    font-size: 11px;
+    font-size: 9px;
     
 }
+@media (min-width: 1809px) {
+    html{
+        font-size: 11px;
+        
+    }
+  }
 body{
     background-color: var(--h-dark-blue);
 }

@@ -28,7 +28,7 @@
   align-items: center;
   background-color: var(--h-dark-blue);
   color: var(--text-white);
-
+ 
   transition: 0.3s linear !important;
   /* border-radius:0 4rem 4rem 0; */
   z-index: 1000;
@@ -96,6 +96,7 @@
   text-decoration: none !important;
   grid-row: 2 / span 4;
   grid-column: 1 / span 1;
+  gap: .5rem;
   /* border: solid 1px white; */
   padding: 3rem 0;
 }
@@ -842,7 +843,7 @@ tr:nth-child(even) {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--text-white-form);
+  color: var(--text-white);
 }
 .welcom-img-con{
   width: 100%;
@@ -857,5 +858,25 @@ max-width: 40%;
 min-width: 30rem;
 }
 /*--------------------------------*/
+.bg-blur{
+  z-index: -100;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.welcom-img-bg{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover
+}
+
+.welcom-img-login{
+  z-index: 100;
+}
 /*--------------------------------*/
+.Login-main-text{
+  font-weight: 700;
+}
 /*--------------------------------*/

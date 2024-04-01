@@ -102,6 +102,7 @@ export default function Registration() {
         inpuConClass: "fromInput field-con",
         name: "patientId",
         placeholder: "Patient ID",
+        maxLength: "6",
         type: "text",
         errorMessage:
           "Patient ID should be 6 characters long",
@@ -126,7 +127,7 @@ export default function Registration() {
         type: "password",
         errorMessage:
           "* Password is Must",
-        pattern: `^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,19}$`,
+        
         label: "Password",
         required: true,
       }
@@ -139,6 +140,7 @@ export default function Registration() {
         inpuConClass: "fromInput field-con",
         name: "patientId",
         placeholder: "Patient ID",
+        maxLength: "6",
         type: "text",
         errorMessage:
           "Patient ID should be 6 characters long",
@@ -255,6 +257,24 @@ export default function Registration() {
   return (
     <main className="reg-from-center">
       <div className="page-name-con">
+      <div className="page-bg-min-con-nav">
+          <div className="page-background-nav page-back-1-nav">
+            <FaHouseMedical />
+          </div>
+          <div className="page-background-nav page-back-3-nav">
+            <CiMedicalCross />
+          </div>
+          <div className="page-background-nav page-back-2-nav">
+            <FaHandHoldingMedical />
+          </div>
+          <div className="page-background-nav page-back-4-nav">
+            <CiMedicalCross />
+          </div>
+         
+          <div className="page-background-nav page-back-5-nav">
+            <CiMedicalClipboard />
+          </div>
+        </div>
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
           <FaUserFriends />

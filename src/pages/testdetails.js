@@ -47,6 +47,7 @@ export default function TestDetails() {
       inpuConClass: "fromInput field-con",
       name: "patientid",
       placeholder: "Patient ID",
+      maxLength: "6",
       type: "text",
       errorMessage:
         "Patient ID should be 6 characters long",
@@ -60,6 +61,23 @@ export default function TestDetails() {
   return (
     <main className="reg-from-center">
       <div className="page-name-con">
+      <div className="page-bg-min-con-nav">
+          <div className="page-background-nav page-back-1-nav">
+            <FaHouseMedical />
+          </div>
+          <div className="page-background-nav page-back-5-nav">
+            <CiMedicalCross />
+          </div>
+          <div className="page-background-nav page-back-2-nav">
+            <CiMedicalCross />
+          </div>
+          <div className="page-background-nav page-back-3-nav">
+            <FaHandHoldingMedical />
+          </div>
+          <div className="page-background-nav page-back-4-nav">
+            <CiMedicalClipboard />
+          </div>
+        </div>
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
           <MdManageSearch />

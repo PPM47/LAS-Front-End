@@ -1,8 +1,9 @@
 import { useState } from "react";
 // import { Link } from "react-router-dom";
 import FormInput from "../components/formInput";
-import { RiAdminLine } from "react-icons/ri";
+import Img2 from "../png/lab-worker-mask-examines-test-tubes-conducts-microscopic-studies.webp";
 import { useNavigate } from 'react-router-dom';
+import { FaUserMd } from "react-icons/fa";
 import axios from "axios";
 export default function AdminLogin() {
   const [logvalues, setValues] = useState({
@@ -64,14 +65,15 @@ export default function AdminLogin() {
   console.log(logvalues);
   return (
     <div className="login-page-main-continer">
+       <div className="bg-blur"> <img className="welcom-img-bg" src={Img2} alt="" /></div>
       <div className="login-main-continer">
         <section className="form-main-continer login-main">
           <div className="form-name-logo-con">
             <div className="form-icon-con">
-              <RiAdminLine />
+              < FaUserMd />
             </div>
             <div className="form-name-con" >
-              <span>Admin LogIn</span>
+              <span className="Login-main-text">Admin LogIn</span>
             </div>
           </div>
 
