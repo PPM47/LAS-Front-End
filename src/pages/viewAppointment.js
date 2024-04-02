@@ -1,5 +1,6 @@
 import { CiMedicalCross, CiMedicalClipboard } from "react-icons/ci";
 import { FaHandHoldingMedical, FaHouseMedical } from "react-icons/fa6";
+import { MdDeleteSweep } from "react-icons/md";
 import { MdPageview } from "react-icons/md";
 import { useState } from "react";
 import axios from "axios";
@@ -32,6 +33,74 @@ export default function ViewAppointment() {
       setIsLoding(false);
     }
   };
+
+  //--------------------------------------------------------------------
+   const [deletevalues, setDValues] = useState({
+    appointmentId: "",
+    patientId: "",
+    email: "",
+  });
+  const [disLoding, setDIsLoding] = useState(false);
+  const onDChange = (e) => {
+    setDValues({ ...deletevalues, [e.target.name]: e.target.value });
+  };
+  //handleDeleteSubmit
+  const handleDeleteSubmit = async (e) => {
+    e.preventDefault();
+    setDIsLoding(true);
+    try {
+      const responce = await axios.delete(
+        `https://las-back-end.onrender.com/api/appointment/delete/${deletevalues.appointmentId}`,
+        {
+          data: {
+            patientId: deletevalues.patientId,
+            email: deletevalues.email
+          }
+        }
+      );
+      alert("Appointment Cancel Successful");
+    } catch (err) {
+      console.log(err);
+      alert("Appointment Cancel Failure!");
+    }
+    setDIsLoding(false);
+  };
+  //--------------------------------------------------------------------
+  
+  const deleteinputs = [
+    {
+      id: 31,
+      inpuConClass: "fromInput field-con",
+      name: "patientId",
+      placeholder: "Patient ID",
+      maxLength: "6",
+      type: "text",
+      errorMessage: "Patient ID should be 6 characters long",
+      label: "Patient ID",
+      required: true,
+    },
+
+    {
+      id: 30,
+      inpuConClass: "fromInput field-con",
+      name: "appointmentId",
+      placeholder: "Appointment ID",
+      type: "text",
+      errorMessage: "Appointment ID should be 8 characters long",
+      label: "Appointment ID",
+      required: true,
+    },
+    {
+      id: 32,
+    inpuConClass: "fromInput field-con",
+    name: "email",
+    placeholder: "Email",
+    type: "email",
+    errorMessage: "Please enter a valid email address",
+    label: "Email",
+    required: true,
+  },
+  ];
 
   console.log(values.date);
 
@@ -157,6 +226,28 @@ export default function ViewAppointment() {
             </tbody>
           </table>
         </div>
+
+        {/* --------------------------------------------------------------------- */}
+        <div className="form-name-logo-con">
+          <div className="form-icon-con">
+            <MdDeleteSweep />
+          </div>
+          <div className="form-name-con">
+            <span>Appointment Cancel</span>
+          </div>
+        </div>
+        <form className="reg-from-con" onSubmit={handleDeleteSubmit}>
+          {deleteinputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={deletevalues[input.name]}
+              onChange={onDChange}
+            />
+          ))}
+
+          <button disabled={disLoding}>Cancel</button>
+        </form>
       </section>
     </main>
   );

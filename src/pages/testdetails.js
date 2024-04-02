@@ -145,7 +145,7 @@ export default function TestDetails() {
                 <th>Gender</th>
                 <th>Number</th>
                 <th>Email</th>
-                <th>password</th>
+              
                 
               </tr>
             </thead>
@@ -158,7 +158,7 @@ export default function TestDetails() {
                   <td>{Patient.gender}</td>
                   <td>{Patient.number}</td>
                   <td>{Patient.email}</td>
-                  <td>{Patient.password}</td>
+                 
                 
                 </tr>
               ))}
