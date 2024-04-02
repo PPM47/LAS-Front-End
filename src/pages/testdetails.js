@@ -23,12 +23,12 @@ export default function TestDetails() {
     setpdIsLoding(true);
     try {
       const response = await axios.get(
-        `http://localhost:9098/api/patient/id/${values.patientid}`
+        `https://las-back-end.onrender.com/api/patient/id/${values.patientid}`
       );
       setpatientdt(response.data);
 
       const responses = await axios.get(
-        `http://localhost:9098/api/appointment/pAppointment/${values.patientid}`
+        `https://las-back-end.onrender.com/api/appointment/pAppointment/${values.patientid}`
       );
       setpatientdat(responses.data);
 

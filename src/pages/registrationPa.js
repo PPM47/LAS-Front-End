@@ -29,7 +29,7 @@ export default function RegistrationPa() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/patient/Reg', {
+      const responce = await axios.post('https://las-back-end.onrender.com/api/patient/Reg', {
         patientFName: values.patientFName,
         patientLName: values.patientLName,
         number: values.number, 

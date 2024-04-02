@@ -31,7 +31,7 @@ export default function Registration() {
     setIsLoding(true);
     try {
       const responce = await axios.post(
-        "http://localhost:9098/api/patient/Reg",
+        "https://las-back-end.onrender.com/api/patient/Reg",
         {
           patientFName: values.patientFName,
           patientLName: values.patientLName,

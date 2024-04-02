@@ -26,7 +26,7 @@ export default function Registration() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/admin/Reg', {
+      const responce = await axios.post('https://las-back-end.onrender.com/api/admin/Reg', {
         adminName: values.adminName,
         email: values.email,
         password: values.password,

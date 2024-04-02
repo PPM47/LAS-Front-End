@@ -30,7 +30,7 @@ export default function Registration() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/appointment/payment', {
+      const responce = await axios.post('https://las-back-end.onrender.com/api/appointment/payment', {
         name: values.name,
         date: values.date,
         patientId: values.patientId, 

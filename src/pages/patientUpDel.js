@@ -39,7 +39,7 @@ export default function Registration() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.put(`http://localhost:9098/api/patient/update/${values.patientId}`, {
+      const responce = await axios.put(`https://las-back-end.onrender.com/api/patient/update/${values.patientId}`, {
         patientFName: values.patientFName,
         patientLName: values.patientLName,
         number: values.number, 
@@ -74,7 +74,7 @@ export default function Registration() {
     e.preventDefault();
     setDIsLoding(true);
     try {
-      const responce = await axios.delete(`http://localhost:9098/api/patient/delete/${deletevalues.patientId}`, {
+      const responce = await axios.delete(`https://las-back-end.onrender.com/api/patient/delete/${deletevalues.patientId}`, {
       
       data: {
         email: deletevalues.email,

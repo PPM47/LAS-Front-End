@@ -23,7 +23,7 @@ export default function ViewAppointment() {
     setIsLoding(true);
     try {
       const response = await axios.get(
-        `http://localhost:9098/api/appointment/today/${values.date}`
+        `https://las-back-end.onrender.com/api/appointment/today/${values.date}`
       );
       setAppointments(response.data);
       setIsLoding(false);

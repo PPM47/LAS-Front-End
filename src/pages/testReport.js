@@ -31,7 +31,7 @@ export default function TestReport() {
     setIsLoding(true);
     try {
       const responce = await axios.post(
-        "http://localhost:9098/api/testReport/reportSubmit",
+        "https://las-back-end.onrender.com/api/testReport/reportSubmit",
         {
           appointmentId: values.appointmentId,
           testCatagory: values.testCatagory,

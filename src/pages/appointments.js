@@ -27,7 +27,7 @@ export default function Appointments() {
     setIsLoding(true);
     try {
       const responce = await axios.post(
-        "http://localhost:9098/api/appointment/make",
+        "https://las-back-end.onrender.com/api/appointment/make",
         {
           patientId: values.patientId,
           testCatagory: values.testCatagory,
@@ -62,7 +62,7 @@ export default function Appointments() {
     setDIsLoding(true);
     try {
       const responce = await axios.delete(
-        `http://localhost:9098/api/appointment/delete/${deletevalues.appointmentId}`,
+        `https://las-back-end.onrender.com/api/appointment/delete/${deletevalues.appointmentId}`,
         {
           data: {
             patientId: deletevalues.patientId,
