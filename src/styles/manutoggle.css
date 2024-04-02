@@ -38,6 +38,7 @@
   .menu-btn-bgr::before, .menu-btn-bgr::after {
     content: "";
     position: absolute;
+    z-index: 10000;
     width: 2rem;
     height: 0.28rem;
     border-radius: 10px;
