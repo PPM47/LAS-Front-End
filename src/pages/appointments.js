@@ -37,11 +37,11 @@ export default function Appointments() {
           email: values.email,
         }
       );
-      alert("Patient Registration Successful");
+      alert("Appointment Submit Successful");
       setIsLoding(false);
     } catch (err) {
       console.log(err);
-      alert("Patient Registration Failure!", err);
+      alert("Appointment Submit Failure!", err);
       setIsLoding(false);
     }
   };

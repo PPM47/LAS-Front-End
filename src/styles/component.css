@@ -476,11 +476,11 @@
 }
 @media (min-width: 809px) {
   .form-icon-con {
-    font-size: calc(var(--fontsize-nav-site-name-25) + 2rem);
+    font-size: calc(var(--fontsize-nav-site-name-25) + 1rem);
     color: var(--text-white-form);
   }
   .form-name-con {
-    font-size: calc(var(--fontsize-nav-site-name-25) + 0.6rem);
+    font-size: calc(var(--fontsize-nav-site-name-25) + 0.4rem);
     color: var(--text-white-form);
   }
 }
@@ -803,7 +803,8 @@ tr:nth-child(even) {
   font-size: var(--fontsize-from-input-25);
   font-family: Arial, Helvetica, sans-serif;
   padding: 1rem 0.8rem;
-  border: solid var(--text-white-form) 2px;
+  /* border: solid var(--text-white-form) 2px; */
+  background-color: var(--table-header);
   border-radius: var(--bg-bo-rds);
   text-align: center;
   overflow: hidden;

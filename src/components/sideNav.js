@@ -159,7 +159,7 @@ export const SideNav = () => {
                 }`}
                 to="/registration"
               >
-                Registration
+                Patient Registration
               </Link>
             </NavLink>
           </div>

@@ -10,6 +10,12 @@ html{
     font-size: 9px;
     
 }
+@media (min-width: 809px) {
+    html{
+        font-size: 10px;
+        
+    }
+  }
 @media (min-width: 1809px) {
     html{
         font-size: 11px;

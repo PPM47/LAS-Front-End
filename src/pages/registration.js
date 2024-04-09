@@ -182,7 +182,7 @@ export default function Registration() {
         <span className="page-log-span">
           <IoIosCreate />
         </span>
-        <h1 className="page-name-h1">Registration</h1>
+        <h1 className="page-name-h1">Patient Registration</h1>
       </div>
 
       <section className="form-main-continer">
